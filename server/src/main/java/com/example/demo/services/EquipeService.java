@@ -45,4 +45,7 @@ public class EquipeService {
 	       
 	        return equiperepository.save(existingProduct);
 	    }
+	    public List<String> getEquipeUnique() {
+			return equiperepository.getEquipeUnique();
+		}
 }

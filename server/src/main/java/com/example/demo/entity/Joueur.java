@@ -22,6 +22,6 @@ public class Joueur {
 	private int id ;
 	private String nom;
 	private Date date;
-	private int idEqu;
+	private String idEqu;
 
 }

@@ -4,7 +4,7 @@ const Contact = () => {
   return (
     <div className="container">
       <div className="py-4">
-        <h1>Contact Page</h1>
+        <h1>Login Page</h1>
         <form>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>

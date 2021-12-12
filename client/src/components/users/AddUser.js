@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useState,useEffect  } from "react";
 import axios from 'axios'
 import { useHistory } from "react-router-dom";
 
+
 const AddUser = () => {
   let history = useHistory();
+  const [team,setTeam]=useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  let r
+  let Teams
   const [user, setUser] = useState({
     nom: "",
     date: "",
-    idEqu: "" 
+    idEqu: r
     
   });
 
@@ -21,6 +26,22 @@ const AddUser = () => {
     await axios.post("http://localhost:9191/addJoueur", user);
     history.push("/");
   };
+  useEffect(() => {
+    axios.get("http://localhost:9191/equipesunique")
+        .then((result) => {
+            setTeam(result.data);
+            Teams= result.data[0];
+            //animalRace = ;
+        }).catch(err => console.log(err))
+}, [])
+
+useEffect(() => {
+    if (team.length > 0) {
+        setIsLoaded(true)
+       
+    }
+    console.log(team.length);
+}, [team])
   return (
     <div className="container">
       <div className="w-75 mx-auto shadow p-5">
@@ -46,7 +67,7 @@ const AddUser = () => {
               onChange={e => onInputChange(e)}
             />
           </div>
-          <div className="form-group">
+           {/* <div className="form-group">
             <input
               type="text"
               className="form-control form-control-lg"
@@ -55,7 +76,21 @@ const AddUser = () => {
               value={idEqu}
               onChange={e => onInputChange(e)}
             />
-          </div>
+          </div>  */}
+          <select 
+          
+          onClick={(e)=>{
+            console.log(e.target.value);
+                    Teams = JSON.parse(e.target.value);
+                    
+                }} className="custom-select custom-select-lg mb-3" name="idEqu"  onChange={e => onInputChange(e)} >
+                    {team.map(r=>{
+                     
+                        return <option  value={r}>{r}</option>
+                    })}
+                    
+                </select>
+          
          
          
           <button className="btn btn-primary btn-block">Add User</button>

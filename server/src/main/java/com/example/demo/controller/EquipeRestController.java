@@ -35,6 +35,13 @@ public class EquipeRestController {
     public List<Equipe> findAllProducts() {
         return equipeservice.getEquipes();
     }
+    @GetMapping("/equipesunique")
+    public List<String> findAllUniqueProducts() {
+        return equipeservice.getEquipeUnique();
+    	
+    	
+    }
+    
 
     @GetMapping("/equipeById/{id}")
     public Equipe findEquipeById(@PathVariable int id) {

@@ -25,6 +25,12 @@ public class JoueurService {
 	    public List<Joueur> getJoueurs() {
 	        return joueurrepository.findAll();
 	    }
+	    public List<Joueur> FindJoueurByName(String nom){
+	    	return joueurrepository.FindJoueurByName(nom);
+	    }
+	    public List<Joueur> FindJoueurByEquipe(String idEqu){
+	    	return joueurrepository.FindJoueurByEquipe(idEqu);
+	    }
 
 	    public Joueur getJoueurById(int id) {
 	        return joueurrepository.findById(id).orElse(null);
@@ -43,6 +49,7 @@ public class JoueurService {
 	    	Joueur existingProduct = joueurrepository.findById(joueur.getId()).orElse(null);
 	        existingProduct.setNom(joueur.getNom());
 	       existingProduct.setDate(joueur.getDate());
+	       existingProduct.setIdEqu(joueur.getIdEqu());
 	       
 	        return joueurrepository.save(existingProduct);
 	    }

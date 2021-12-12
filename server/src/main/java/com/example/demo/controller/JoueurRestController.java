@@ -41,6 +41,15 @@ public class JoueurRestController {
 	    public Joueur findJoueurById(@PathVariable int id) {
 	        return joueurservice.getJoueurById(id);
 	    }
+	    @GetMapping("/joueurByName/{nom}")
+	    public List<Joueur> findJoueurByName(@PathVariable String nom) {
+	        return joueurservice.FindJoueurByName(nom);
+	    }
+	    
+	    @GetMapping("/joueurByEquipe/{idEqu}")
+	    public List<Joueur> findJoueurByEquipe(@PathVariable String idEqu) {
+	        return joueurservice.FindJoueurByEquipe(idEqu);
+	    }
 
 	    /*
 	    @GetMapping("/equipe/{name}")
