@@ -106,7 +106,7 @@ useEffect(() => {
                 </select><button type="button" class="btn btn-outline-primary" onClick={() => loadUsersByEquipe(idequsearch)} >Search Equipe</button>
                 
         <h1>Joueur Page</h1>
-        <Link className="btn btn-outline-dark" to="/users/add">Add User</Link>
+        <Link className="btn btn-outline-dark" to="/users/add">Add Userr</Link>
         
         <table class="table border shadow">
           <thead class="thead-dark">
